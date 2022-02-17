@@ -1,0 +1,33 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: test
+  labels:
+    name: test
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  namespace: test
+  labels:
+    name: mypod
+spec:
+  containers:
+  - name: mypod
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.2-alpine
+
+
+# kubectl apply -f test.yaml
+# or
+# kubectl create namespace test
+# create pod in a namespace
+# kubectl apply -f pod.yaml --namespace=test
+# kubectl get pods --namespace=test
+
+# declaratively:
+# metadata:
+#   name: mypod
+#   namespace: test
