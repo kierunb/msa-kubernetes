@@ -58,8 +58,23 @@ kubectl delete -f <file/folder/url>
 kubectl get deployment
 kubectl scale --replicas=5 deployment/backend-deployment
 
-# upgrade deployment
-kubectl set image deployment backend-deployment backend-deployment=<acrLoginServer>/backend-deployment:v2
+
+# update deployment
+
+kubectl set image deployment backend-deployment backend=acregistrybk.azurecr.io/backend:v2
+kubectl get po --watch
+
+# deployment history
+
+kubectl describe deployment/backend-deployment
+kubectl rollout history deployment/backend-deployment
+
+# rollback to previous version
+kubectl rollout undo deployment/backend-deployment
+
+# rollback to specific version
+kubectl rollout undo deployment/backend-deployment --to-revision=2
+
 
 # scale deployment
 # install metric server

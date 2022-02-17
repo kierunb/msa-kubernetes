@@ -20,6 +20,9 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.MapGet("/", () => $"Hello from backend service, version 1.1. {Environment.MachineName}");
+app.MapGet("/healtz", () => "Working...");
+
 app.MapControllers();
 
 app.Run();
