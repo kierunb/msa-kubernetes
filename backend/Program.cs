@@ -21,7 +21,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapGet("/", () => $"Hello from backend service, version 1.1. {Environment.MachineName}");
-app.MapGet("/healtz", () => "Working...");
+
+// lame health check 
+app.MapGet("/healthz", () => "Working...");
 
 app.MapControllers();
 

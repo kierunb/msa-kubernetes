@@ -28,13 +28,13 @@ spec:
             memory: 256Mi #1.5Gi
         livenessProbe:
           httpGet:
-            path: /healtz
+            path: /healthz
             port: 5000
           initialDelaySeconds: 3
           periodSeconds: 3
         readinessProbe:
           httpGet:
-            path: /healtz
+            path: /healthz
             port: 5000
           initialDelaySeconds: 3
           periodSeconds: 3

@@ -1,11 +1,29 @@
 # .NET Microservices with Kubernetes experiments
 
-## > docker compose
+## > Running sample locally using docker compose
 
 ```shell
 docker compose build
 docker compose up
 docker compose down
+```
+
+## > Deploying sample to kubernetes cluster
+
+```shell
+
+# image names should be updated before executing command
+
+kubectl apply -f .\k8s\backend-deployment.yml
+kubectl apply -f .\k8s\frontend-deployment.yml
+
+kubectl delete -f .\k8s\backend-deployment.yml
+kubectl delete -f .\k8s\frontend-deployment.yml
+
+# additional items
+kubectl apply -f .\k8s\redis-deployment.yml     # simple redis
+kubectl apply -f .\k8s\ingress.yml              # nginx ingress deploymetn and configuration
+
 ```
 
 ## > kubectl commands
