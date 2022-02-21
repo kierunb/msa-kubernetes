@@ -24,6 +24,9 @@ kubectl delete -f .\k8s\frontend-deployment.yml
 kubectl apply -f .\k8s\redis-deployment.yml     # simple redis
 kubectl apply -f .\k8s\ingress.yml              # nginx ingress deploymetn and configuration
 
+# configure hpa
+kubectl autoscale deployment backend-deployment --cpu-percent=70 --min=1 --max=5
+
 ```
 
 ## > kubectl commands

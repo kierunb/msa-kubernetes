@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: artillery-deployment
+  labels:
+    app: artillery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: artillery
+  template:
+    metadata:
+      labels:
+        app: artillery
+    spec:
+      containers:
+      - name: artillery
+        image: artilleryio/artillery:1.6.2
+        command:
+          - "quick -n 1000 -c 10 http://backend:5000/"

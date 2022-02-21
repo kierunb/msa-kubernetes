@@ -92,6 +92,26 @@
             "netCore": {
                 "appProject": "${workspaceFolder}/backend/backend.csproj"
             }
+        },
+        {
+            "label": "bridge-to-kubernetes.resource",
+            "type": "bridge-to-kubernetes.resource",
+            "resource": "backend",
+            "resourceType": "service",
+            "ports": [
+                8888
+            ],
+            "targetCluster": "aks-bk",
+            "targetNamespace": "default",
+            "useKubernetesServiceEnvironmentVariables": false
+        },
+        {
+            "label": "bridge-to-kubernetes.compound",
+            "dependsOn": [
+                "bridge-to-kubernetes.resource",
+                "build"
+            ],
+            "dependsOrder": "sequence"
         }
     ]
 }
